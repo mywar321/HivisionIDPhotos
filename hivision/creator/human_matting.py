@@ -35,6 +35,9 @@ WEIGHTS = {
     "birefnet-v1-lite": os.path.join(
         os.path.dirname(__file__), "weights", "birefnet-v1-lite.onnx"
     ),
+    "birefnet-portrait": os.path.join(
+        os.path.dirname(__file__), "weights", "birefnet-portrait.onnx"
+    )
 }
 
 ONNX_DEVICE = onnxruntime.get_device()
@@ -116,12 +119,12 @@ def extract_human_rmbg(ctx: Context):
     ctx.matting_image = ctx.processing_image.copy()
 
 
-# def extract_human_birefnet_portrait(ctx: Context):
-#     matting_image = get_birefnet_portrait_matting(
-#         ctx.processing_image, WEIGHTS["birefnet-portrait"]
-#     )
-#     ctx.processing_image = matting_image
-#     ctx.matting_image = ctx.processing_image.copy()
+def extract_human_birefnet_portrait(ctx: Context):
+    matting_image = get_birefnet_portrait_matting(
+        ctx.processing_image, WEIGHTS["birefnet-portrait"]
+    )
+    ctx.processing_image = matting_image
+    ctx.matting_image = ctx.processing_image.copy()
 
 
 def extract_human_birefnet_lite(ctx: Context):

@@ -7,6 +7,7 @@ HUMAN_MATTING_MODELS = [
     "birefnet-v1-lite",
     "hivision_modnet",
     "rmbg-1.4",
+    "birefnet-portrait"
 ]
 
 FACE_DETECT_MODELS = ["face++ (联网Online API)", "mtcnn", "retinaface-resnet50"]
@@ -21,6 +22,8 @@ def choose_handler(creator, matting_model_option=None, face_detect_option=None):
         creator.matting_handler = extract_human_rmbg
     elif matting_model_option == "birefnet-v1-lite":
         creator.matting_handler = extract_human_birefnet_lite
+    elif matting_model_option == "birefnet-portrait":
+        creator.matting_handler = extract_human_birefnet_portrait
     else:
         creator.matting_handler = extract_human
 
